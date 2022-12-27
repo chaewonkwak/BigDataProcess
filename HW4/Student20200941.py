@@ -1,4 +1,4 @@
-!/usr/bin/python3
+#!/usr/bin/python3
 
 import numpy as np
 import operator
@@ -19,8 +19,8 @@ def generateVector(file):
     fr = open(file)
     for i in range(32):
         line = fr.readline()
-        for j in range(50):
-              vector[0,50*i+j] = int(line[j])
+        for j in range(32):
+              vector[0,32*i+j] = int(float(line[j]))
     return vector
 
 # def createDataSet():
@@ -69,14 +69,14 @@ def errorCheck(k):
     for i in range(m):
         file = trainDataSet[i]
         file_name = file.split(".")[0]
-        answer = int(file_name,split("_")[0]
+        answer = int(file_name.split("_")[0])
         labels.append(answer)
         train_matrix[i,:] = generateVector("%s/%s" % (train_data, file))
 
     for i in range(n):
         file = testDataSet[i]
         file_name = file.split(".")[0]
-        answer = int(file_name,split("_")[0]
+        answer = int(file_name.split("_")[0])
         testVector = generateVector("%s/%s" % (test_data, file))
         result = classify0(testVector, train_matrix, labels, k)
         if (result != answer):
