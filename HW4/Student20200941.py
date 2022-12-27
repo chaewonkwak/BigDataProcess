@@ -6,7 +6,7 @@ import re
 import sys 
 import cv2
 import glob
-import listdir from os
+from os import listdir
 
 
 # 매개변수로 받은 디렉토리들을 각각 train_data, test_data에 저장
@@ -68,13 +68,15 @@ def errorCheck(k):
     
     for i in range(m):
         file = trainDataSet[i]
-        answer = re.findall(r"(\d+)", i)[0]
+        file_name = file.split(".")[0]
+        answer = int(file_name,split("_")[0]
         labels.append(answer)
         train_matrix[i,:] = generateVector("%s/%s" % (train_data, file))
 
     for i in range(n):
         file = testDataSet[i]
-        answer = re.findall(r"(\d+)", i)[0]
+        file_name = file.split(".")[0]
+        answer = int(file_name,split("_")[0]
         testVector = generateVector("%s/%s" % (test_data, file))
         result = classify0(testVector, train_matrix, labels, k)
         if (result != answer):
